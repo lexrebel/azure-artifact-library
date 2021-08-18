@@ -14,6 +14,10 @@ dependencies {
     implementation(kotlin("stdlib"))
 }
 
+java {
+    withSourcesJar()
+}
+
 publishing {
     publications {
         create<MavenPublication>("maven") {
