@@ -17,9 +17,9 @@ dependencies {
 publishing {
     publications {
         create<MavenPublication>("maven") {
-            groupId = group.toString()
-            artifactId = "library"
-            version = version.toString()
+            groupId = "com.alexrebello"
+            artifactId = "poc-azure-artifacts"
+            version = "1.0-SNAPSHOT"
 
             from(components["java"])
         }
