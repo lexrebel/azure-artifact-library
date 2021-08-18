@@ -28,4 +28,17 @@ publishing {
             from(components["java"])
         }
     }
+    repositories {
+        maven {
+            url = uri("https://pkgs.dev.azure.com/lexrebello/poc-azure-artifact/_packaging/poc/maven/v1")
+            name = "poc"
+        }
+    }
+}
+
+repositories {
+    maven {
+        url = uri("https://pkgs.dev.azure.com/lexrebello/poc-azure-artifact/_packaging/poc/maven/v1")
+        name = "poc"
+    }
 }
