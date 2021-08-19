@@ -24,5 +24,5 @@ steps:
     spotBugsAnalysis: false
     gradleWrapperFile: $(System.DefaultWorkingDirectory)/gradlew
     jdkVersionOption: 1.11
-    workingDirectory: $(System.DefaultWorkingDirectory)/app
+    workingDirectory: $(System.DefaultWorkingDirectory)
     publishJUnitResults: false
