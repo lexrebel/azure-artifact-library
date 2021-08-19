@@ -30,15 +30,23 @@ publishing {
     }
     repositories {
         maven {
-            url = uri("https://pkgs.dev.azure.com/lexrebello/poc-azure-artifact/_packaging/poc/maven/v1")
+            url = uri(System.getenv("AZURE_ARTIFACTS_ENV_ACCESS_URI"))
             name = "poc"
+            credentials {
+                username = System.getenv("AZURE_ARTIFACTS_ENV_ACCESS_USERNAME")
+                password = System.getenv("AZURE_ARTIFACTS_ENV_ACCESS_TOKEN")
+            }
         }
     }
 }
 
 repositories {
     maven {
-        url = uri("https://pkgs.dev.azure.com/lexrebello/poc-azure-artifact/_packaging/poc/maven/v1")
+        url = uri(System.getenv("AZURE_ARTIFACTS_ENV_ACCESS_URI"))
         name = "poc"
+        credentials {
+            username = System.getenv("AZURE_ARTIFACTS_ENV_ACCESS_USERNAME")
+            password = System.getenv("AZURE_ARTIFACTS_ENV_ACCESS_TOKEN")
+        }
     }
 }
