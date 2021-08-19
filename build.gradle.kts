@@ -1,6 +1,7 @@
 plugins {
     kotlin("jvm") version "1.5.10"
     `maven-publish`
+    `java-library`
 }
 
 group = "com.alexrebello"
@@ -9,15 +10,8 @@ version = "1.0-SNAPSHOT"
 repositories {
     mavenCentral()
     maven {
-        url = uri(if (System.getenv("ARTIFACTS_ENV_ACCESS_URI") != null) System.getenv("ARTIFACTS_ENV_ACCESS_URI") else " ")
+        url = uri("https://pkgs.dev.azure.com/lexrebello/poc-azure-artifact/_packaging/poc/maven/v1")
         name = "poc"
-        credentials {
-            username = if (System.getenv("ARTIFACTS_ENV_ACCESS_USERNAME") != null) System.getenv("ARTIFACTS_ENV_ACCESS_USERNAME") else " "
-            password = if (System.getenv("ARTIFACTS_ENV_ACCESS_TOKEN") != null) System.getenv("ARTIFACTS_ENV_ACCESS_TOKEN") else " "
-        }
-        authentication {
-            create<BasicAuthentication>("basic")
-        }
     }
 }
 
@@ -41,15 +35,8 @@ publishing {
     }
     repositories {
         maven {
-            url = uri(if (System.getenv("ARTIFACTS_ENV_ACCESS_URI") != null) System.getenv("ARTIFACTS_ENV_ACCESS_URI") else " ")
+            url = uri("https://pkgs.dev.azure.com/lexrebello/poc-azure-artifact/_packaging/poc/maven/v1")
             name = "poc"
-            authentication {
-                create<BasicAuthentication>("basic")
-            }
-            credentials {
-                username = if (System.getenv("ARTIFACTS_ENV_ACCESS_USERNAME") != null) System.getenv("ARTIFACTS_ENV_ACCESS_USERNAME") else " "
-                password = if (System.getenv("ARTIFACTS_ENV_ACCESS_TOKEN") != null) System.getenv("ARTIFACTS_ENV_ACCESS_TOKEN") else " "
-            }
         }
     }
 }
