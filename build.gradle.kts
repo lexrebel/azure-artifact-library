@@ -8,6 +8,17 @@ version = "1.0-SNAPSHOT"
 
 repositories {
     mavenCentral()
+    maven {
+        url = uri(if (System.getenv("ARTIFACTS_ENV_ACCESS_URI") != null) System.getenv("ARTIFACTS_ENV_ACCESS_URI") else " ")
+        name = "poc"
+        credentials {
+            username = if (System.getenv("ARTIFACTS_ENV_ACCESS_USERNAME") != null) System.getenv("ARTIFACTS_ENV_ACCESS_USERNAME") else " "
+            password = if (System.getenv("ARTIFACTS_ENV_ACCESS_TOKEN") != null) System.getenv("ARTIFACTS_ENV_ACCESS_TOKEN") else " "
+        }
+        authentication {
+            create<BasicAuthentication>("basic")
+        }
+    }
 }
 
 dependencies {
@@ -39,20 +50,6 @@ publishing {
                 username = if (System.getenv("ARTIFACTS_ENV_ACCESS_USERNAME") != null) System.getenv("ARTIFACTS_ENV_ACCESS_USERNAME") else " "
                 password = if (System.getenv("ARTIFACTS_ENV_ACCESS_TOKEN") != null) System.getenv("ARTIFACTS_ENV_ACCESS_TOKEN") else " "
             }
-        }
-    }
-}
-
-repositories {
-    maven {
-        url = uri(if (System.getenv("ARTIFACTS_ENV_ACCESS_URI") != null) System.getenv("ARTIFACTS_ENV_ACCESS_URI") else " ")
-        name = "poc"
-        credentials {
-            username = if (System.getenv("ARTIFACTS_ENV_ACCESS_USERNAME") != null) System.getenv("ARTIFACTS_ENV_ACCESS_USERNAME") else " "
-            password = if (System.getenv("ARTIFACTS_ENV_ACCESS_TOKEN") != null) System.getenv("ARTIFACTS_ENV_ACCESS_TOKEN") else " "
-        }
-        authentication {
-            create<BasicAuthentication>("basic")
         }
     }
 }
