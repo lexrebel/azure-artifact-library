@@ -18,26 +18,6 @@ variables:
 steps:
 - task: Gradle@2
   inputs:
-    displayName: Testes unitarios
-    gradleWrapperFile: 'gradlew'
-    tasks: 'test'
-    publishJUnitResults: true
-    testResultsFiles: '**/TEST-*.xml'
-    javaHomeOption: 'JDKVersion'
-    sonarQubeRunAnalysis: false
-    spotBugsAnalysis: false
-- task: Gradle@2
-  inputs:
-    displayName: Build
-    gradleWrapperFile: 'gradlew'
-    tasks: 'build'
-    publishJUnitResults: true
-    testResultsFiles: '**/TEST-*.xml'
-    javaHomeOption: 'JDKVersion'
-    sonarQubeRunAnalysis: false
-    spotBugsAnalysis: false
-- task: Gradle@2
-  inputs:
     displayName: Publish
     gradleWrapperFile: 'gradlew'
     tasks: 'publish'
