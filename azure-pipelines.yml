@@ -10,6 +10,11 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 
+variables:
+  AZURE_ARTIFACTS_ENV_ACCESS_URI: $(AZURE_ARTIFACTS_ENV_ACCESS_URI)
+  AZURE_ARTIFACTS_ENV_ACCESS_USERNAME: $(AZURE_ARTIFACTS_ENV_ACCESS_USERNAME)
+  AZURE_ARTIFACTS_ENV_ACCESS_TOKEN: $(AZURE_ARTIFACTS_ENV_ACCESS_TOKEN)
+
 steps:
 - task: Gradle@2
   inputs:
@@ -21,10 +26,6 @@ steps:
     javaHomeOption: 'JDKVersion'
     sonarQubeRunAnalysis: false
     spotBugsAnalysis: false
-    env:
-      AZURE_ARTIFACTS_ENV_ACCESS_URI: $(AZURE_ARTIFACTS_ENV_ACCESS_URI)
-      AZURE_ARTIFACTS_ENV_ACCESS_USERNAME: $(AZURE_ARTIFACTS_ENV_ACCESS_USERNAME)
-      AZURE_ARTIFACTS_ENV_ACCESS_TOKEN: $(AZURE_ARTIFACTS_ENV_ACCESS_TOKEN)
 - task: Gradle@2
   inputs:
     displayName: Build
@@ -35,10 +36,6 @@ steps:
     javaHomeOption: 'JDKVersion'
     sonarQubeRunAnalysis: false
     spotBugsAnalysis: false
-    env:
-      AZURE_ARTIFACTS_ENV_ACCESS_URI: $(AZURE_ARTIFACTS_ENV_ACCESS_URI)
-      AZURE_ARTIFACTS_ENV_ACCESS_USERNAME: $(AZURE_ARTIFACTS_ENV_ACCESS_USERNAME)
-      AZURE_ARTIFACTS_ENV_ACCESS_TOKEN: $(AZURE_ARTIFACTS_ENV_ACCESS_TOKEN)
 - task: Gradle@2
   inputs:
     displayName: Publish
@@ -49,7 +46,3 @@ steps:
     javaHomeOption: 'JDKVersion'
     sonarQubeRunAnalysis: false
     spotBugsAnalysis: false
-    env:
-      AZURE_ARTIFACTS_ENV_ACCESS_URI: $(AZURE_ARTIFACTS_ENV_ACCESS_URI)
-      AZURE_ARTIFACTS_ENV_ACCESS_USERNAME: $(AZURE_ARTIFACTS_ENV_ACCESS_USERNAME)
-      AZURE_ARTIFACTS_ENV_ACCESS_TOKEN: $(AZURE_ARTIFACTS_ENV_ACCESS_TOKEN)
