@@ -17,12 +17,12 @@ variables:
 
 steps:
 - task: Gradle@2
+  displayName: Publish
   inputs:
-    displayName: Publish
-    gradleWrapperFile: 'gradlew'
     tasks: 'publish'
-    publishJUnitResults: true
-    testResultsFiles: '**/TEST-*.xml'
-    javaHomeOption: 'JDKVersion'
     sonarQubeRunAnalysis: false
     spotBugsAnalysis: false
+    gradleWrapperFile: $(System.DefaultWorkingDirectory)/gradlew
+    jdkVersionOption: 1.11
+    workingDirectory: $(System.DefaultWorkingDirectory)/app
+    publishJUnitResults: false
