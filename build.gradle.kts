@@ -1,6 +1,7 @@
 plugins {
-    kotlin("jvm") version "1.5.10"
+    `kotlin-dsl`
     `maven-publish`
+    kotlin("jvm") version "1.5.10"
 }
 
 group = "com.alexrebello"
