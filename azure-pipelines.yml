@@ -13,6 +13,7 @@ pool:
 steps:
 - task: Gradle@2
   inputs:
+    displayName: Testes unitarios
     gradleWrapperFile: 'gradlew'
     tasks: 'test'
     publishJUnitResults: true
@@ -20,8 +21,13 @@ steps:
     javaHomeOption: 'JDKVersion'
     sonarQubeRunAnalysis: false
     spotBugsAnalysis: false
+    env:
+      AZURE_ARTIFACTS_ENV_ACCESS_URI: $(AZURE_ARTIFACTS_ENV_ACCESS_URI)
+      AZURE_ARTIFACTS_ENV_ACCESS_USERNAME: $(AZURE_ARTIFACTS_ENV_ACCESS_USERNAME)
+      AZURE_ARTIFACTS_ENV_ACCESS_TOKEN: $(AZURE_ARTIFACTS_ENV_ACCESS_TOKEN)
 - task: Gradle@2
   inputs:
+    displayName: Build
     gradleWrapperFile: 'gradlew'
     tasks: 'build'
     publishJUnitResults: true
@@ -29,8 +35,13 @@ steps:
     javaHomeOption: 'JDKVersion'
     sonarQubeRunAnalysis: false
     spotBugsAnalysis: false
+    env:
+      AZURE_ARTIFACTS_ENV_ACCESS_URI: $(AZURE_ARTIFACTS_ENV_ACCESS_URI)
+      AZURE_ARTIFACTS_ENV_ACCESS_USERNAME: $(AZURE_ARTIFACTS_ENV_ACCESS_USERNAME)
+      AZURE_ARTIFACTS_ENV_ACCESS_TOKEN: $(AZURE_ARTIFACTS_ENV_ACCESS_TOKEN)
 - task: Gradle@2
   inputs:
+    displayName: Publish
     gradleWrapperFile: 'gradlew'
     tasks: 'publish'
     publishJUnitResults: true
@@ -38,3 +49,7 @@ steps:
     javaHomeOption: 'JDKVersion'
     sonarQubeRunAnalysis: false
     spotBugsAnalysis: false
+    env:
+      AZURE_ARTIFACTS_ENV_ACCESS_URI: $(AZURE_ARTIFACTS_ENV_ACCESS_URI)
+      AZURE_ARTIFACTS_ENV_ACCESS_USERNAME: $(AZURE_ARTIFACTS_ENV_ACCESS_USERNAME)
+      AZURE_ARTIFACTS_ENV_ACCESS_TOKEN: $(AZURE_ARTIFACTS_ENV_ACCESS_TOKEN)
