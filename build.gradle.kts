@@ -30,11 +30,11 @@ publishing {
     }
     repositories {
         maven {
-            url = uri(if(System.getenv("AZURE_ARTIFACTS_ENV_ACCESS_URI") != null) System.getenv("AZURE_ARTIFACTS_ENV_ACCESS_URI") else " ")
+            url = uri(if(System.getenv("ARTIFACTS_ENV_ACCESS_URI") != null) System.getenv("ARTIFACTS_ENV_ACCESS_URI") else " ")
             name = "poc"
             credentials {
-                username = if(System.getenv("AZURE_ARTIFACTS_ENV_ACCESS_USERNAME") != null) System.getenv("AZURE_ARTIFACTS_ENV_ACCESS_USERNAME") else " "
-                password = if(System.getenv("AZURE_ARTIFACTS_ENV_ACCESS_TOKEN") != null) System.getenv("AZURE_ARTIFACTS_ENV_ACCESS_TOKEN") else " "
+                username = if(System.getenv("ARTIFACTS_ENV_ACCESS_USERNAME") != null) System.getenv("ARTIFACTS_ENV_ACCESS_USERNAME") else " "
+                password = if(System.getenv("ARTIFACTS_ENV_ACCESS_TOKEN") != null) System.getenv("ARTIFACTS_ENV_ACCESS_TOKEN") else " "
             }
         }
     }
@@ -42,11 +42,11 @@ publishing {
 
 repositories {
     maven {
-        url = uri(if(System.getenv("AZURE_ARTIFACTS_ENV_ACCESS_URI") != null) System.getenv("AZURE_ARTIFACTS_ENV_ACCESS_URI") else " ")
+        url = uri(if(System.getenv("ARTIFACTS_ENV_ACCESS_URI") != null) System.getenv("ARTIFACTS_ENV_ACCESS_URI") else " ")
         name = "poc"
         credentials {
-            username = if(System.getenv("AZURE_ARTIFACTS_ENV_ACCESS_USERNAME") != null) System.getenv("AZURE_ARTIFACTS_ENV_ACCESS_USERNAME") else " "
-            password = if(System.getenv("AZURE_ARTIFACTS_ENV_ACCESS_TOKEN") != null) System.getenv("AZURE_ARTIFACTS_ENV_ACCESS_TOKEN") else " "
+            username = if(System.getenv("ARTIFACTS_ENV_ACCESS_USERNAME") != null) System.getenv("ARTIFACTS_ENV_ACCESS_USERNAME") else " "
+            password = if(System.getenv("ARTIFACTS_ENV_ACCESS_TOKEN") != null) System.getenv("ARTIFACTS_ENV_ACCESS_TOKEN") else " "
         }
     }
 }
