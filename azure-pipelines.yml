@@ -21,5 +21,8 @@ steps:
     sonarQubeRunAnalysis: false
     spotBugsAnalysis: false
 - publish: $(System.DefaultWorkingDirectory)/build/libs/azure-artifact-library-1.0-SNAPSHOT.jar
-  artifact: AzureArtifactLibrary
-
+- task: PublishPipelineArtifact@1
+  inputs:
+    targetPath: $(System.DefaultWorkingDirectory)/build/libs/azure-artifact-library-1.0-SNAPSHOT.jar
+    artifactType: filepath
+    fileSharePath: 'https://pkgs.dev.azure.com/lexrebello/poc-azure-artifact/_packaging/poc/maven/v1'
