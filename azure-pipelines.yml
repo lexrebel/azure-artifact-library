@@ -11,6 +11,15 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
+- task: Gradle@2
+  inputs:
+    gradleWrapperFile: 'gradlew'
+    tasks: 'build'
+    publishJUnitResults: true
+    testResultsFiles: '**/TEST-*.xml'
+    javaHomeOption: 'JDKVersion'
+    sonarQubeRunAnalysis: false
+    spotBugsAnalysis: false
 - publish: $(System.DefaultWorkingDirectory)/build/libs/azure-artifact-library-1.0-SNAPSHOT.jar
   artifact: azure-artifact-library-1.0-SNAPSHOT.jar
 
