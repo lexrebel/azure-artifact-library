@@ -14,7 +14,7 @@ steps:
 - task: Gradle@2
   inputs:
     gradleWrapperFile: 'gradlew'
-    tasks: 'build'
+    tasks: 'build publish'
     publishJUnitResults: true
     testResultsFiles: '**/TEST-*.xml'
     javaHomeOption: 'JDKVersion'
@@ -28,3 +28,4 @@ steps:
     vstsFeedPublish: '5cd3e903-e14d-4f40-b36b-a3706213bf6b/a45fd02a-3823-4b67-991b-fabb27599c4e'
     vstsFeedPackagePublish: 'azure-artifact-lib'
     versionOption: 'patch'
+
