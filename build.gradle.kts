@@ -9,10 +9,10 @@ version = "1.0-SNAPSHOT"
 
 repositories {
     mavenCentral()
-//    maven {
-//        url = uri("https://pkgs.dev.azure.com/lexrebello/poc-azure-artifact/_packaging/poc/maven/v1")
-//        name = "poc"
-//    }
+    maven {
+        url = uri("https://pkgs.dev.azure.com/lexrebello/poc-azure-artifact/_packaging/poc/maven/v1")
+        name = "poc"
+    }
 }
 
 dependencies {
