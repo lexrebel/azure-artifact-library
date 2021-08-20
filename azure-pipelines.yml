@@ -20,12 +20,4 @@ steps:
     javaHomeOption: 'JDKVersion'
     sonarQubeRunAnalysis: false
     spotBugsAnalysis: false
-- task: UniversalPackages@0
-  inputs:
-    command: 'publish'
-    publishDirectory: '$(System.DefaultWorkingDirectory)/build/libs/azure-artifact-library-1.0-SNAPSHOT.jar'
-    feedsToUsePublish: 'internal'
-    vstsFeedPublish: '5cd3e903-e14d-4f40-b36b-a3706213bf6b/a45fd02a-3823-4b67-991b-fabb27599c4e'
-    vstsFeedPackagePublish: 'azure-artifact-lib'
-    versionOption: 'patch'
 
