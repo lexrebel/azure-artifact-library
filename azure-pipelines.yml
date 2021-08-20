@@ -11,18 +11,11 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
-- task: Gradle@2
+- task: UniversalPackages@0
   inputs:
-    gradleWrapperFile: 'gradlew'
-    tasks: 'build'
-    publishJUnitResults: true
-    testResultsFiles: '**/TEST-*.xml'
-    javaHomeOption: 'JDKVersion'
-    sonarQubeRunAnalysis: false
-    spotBugsAnalysis: false
-- publish: $(System.DefaultWorkingDirectory)/build/libs/azure-artifact-library-1.0-SNAPSHOT.jar
-- task: PublishPipelineArtifact@1
-  inputs:
-    targetPath: $(System.DefaultWorkingDirectory)/build/libs/azure-artifact-library-1.0-SNAPSHOT.jar
-    artifactType: filepath
-    fileSharePath: 'https://pkgs.dev.azure.com/lexrebello/poc-azure-artifact/_packaging/poc/maven/v1'
+    command: 'publish'
+    publishDirectory: '$(Build.ArtifactStagingDirectory)'
+    feedsToUsePublish: 'internal'
+    vstsFeedPublish: '5cd3e903-e14d-4f40-b36b-a3706213bf6b/a45fd02a-3823-4b67-991b-fabb27599c4e'
+    vstsFeedPackagePublish: 'PocAzureArtifactID'
+    versionOption: 'patch'
