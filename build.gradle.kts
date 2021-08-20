@@ -10,8 +10,11 @@ version = "1.0-SNAPSHOT"
 repositories {
     mavenCentral()
     maven {
-        url = uri("https://pkgs.dev.azure.com/lexrebello/poc-azure-artifact/_packaging/poc/maven/v1")
-        name = "poc"
+        url = uri("https://pkgs.dev.azure.com/{OrganizationName}/{ProjectName}/_packaging/{FeedName}/maven/v1")
+        credentials {
+            username = "poc"
+            password = System.getenv("AZURE_ARTIFACTS_ENV_ACCESS_TOKEN") ?: ""
+        }
     }
 }
 
@@ -33,10 +36,14 @@ publishing {
             from(components["java"])
         }
     }
+
     repositories {
         maven {
-            url = uri("https://pkgs.dev.azure.com/lexrebello/poc-azure-artifact/_packaging/poc/maven/v1")
-            name = "poc"
+            url = uri("https://pkgs.dev.azure.com/{OrganizationName}/{ProjectName}/_packaging/{FeedName}/maven/v1")
+            credentials {
+                username = "poc"
+                password = System.getenv("AZURE_ARTIFACTS_ENV_ACCESS_TOKEN") ?: ""
+            }
         }
     }
 }
