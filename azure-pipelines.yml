@@ -11,6 +11,12 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
+- task: CopyFiles@2
+  inputs:
+    SourceFolder: 'credential'
+    Contents: '**'
+    TargetFolder: '${user.home}/.m2'
+
 - task: Gradle@2
   displayName: Publish
   inputs:
