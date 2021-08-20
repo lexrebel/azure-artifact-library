@@ -11,11 +11,17 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
-- task: CopyFiles@2
+- task: DownloadSecureFile@1
+  name: settings
+  displayName: 'Download settings.xml'
   inputs:
-    SourceFolder: 'credential'
-    Contents: '**'
-    TargetFolder: '${user.home}/.m2'
+    secureFile: 'settings.xml'
+
+- script: |
+    echo Installing $(settings.secureFilePath) to the /.m2...
+    sudo chown root:root $(settings.secureFilePath)
+    sudo chmod a+r $(settings.secureFilePath)
+    sudo cp $(settings.secureFilePath) ${user.home}/.m2
 
 - task: Gradle@2
   displayName: Publish
