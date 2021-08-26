@@ -18,10 +18,10 @@ parameters:
   - MAJOR
 
 jobs:
-  - job: PATCH
+  - job: B
     steps:
     - script: echo I did a PATCH
-    condition: equals(version, "PATCH")
+    condition: eq(parameters.version, 'PATCH')
 
 pool:
   vmImage: ubuntu-latest
