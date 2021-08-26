@@ -5,7 +5,17 @@
 # https://aka.ms/yaml
 
 trigger:
-- master
+- none
+
+parameters:
+- name: image
+  displayName: Semantic Versioning
+  type: string
+  default: PATCH
+  values:
+  - PATCH
+  - MINOR
+  - MAJOR
 
 pool:
   vmImage: ubuntu-latest
