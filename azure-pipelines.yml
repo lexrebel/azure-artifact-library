@@ -22,7 +22,7 @@ pool:
 
 steps:
 - script: echo I did a PATCH
-  condition: eq(parameters.version, "PATCH")
+  condition: eq('${{ parameters.version }}' , "PATCH")
 - task: Gradle@2
   inputs:
     gradleWrapperFile: 'gradlew'
