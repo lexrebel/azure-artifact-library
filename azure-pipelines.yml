@@ -15,8 +15,12 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
-- script: echo I did a PATCH
-  condition: eq('${{ parameters.version }}' , 'PATCH')
+- ${{ if eq(parameters.version, 'PATCH') }}:
+  - script: echo "I did a PATCH"
+- ${{ if eq(parameters.version, 'MINOR') }}:
+  - script: echo "I did a MINOR"
+- ${{ if eq(parameters.version, 'MAJOR') }}:
+  - script: echo "I did a MAJOR"
 - task: Gradle@2
   inputs:
     gradleWrapperFile: 'gradlew'
