@@ -8,7 +8,7 @@ trigger:
 - none
 
 parameters:
-- name: image
+- name: version
   displayName: Semantic Versioning
   type: string
   default: PATCH
@@ -16,6 +16,12 @@ parameters:
   - PATCH
   - MINOR
   - MAJOR
+
+jobs:
+  - job: PATCH
+    steps:
+    - script: echo I did a PATCH
+    condition: equals(version, "PATCH")
 
 pool:
   vmImage: ubuntu-latest
