@@ -1,9 +1,3 @@
-# Starter pipeline
-
-# Start with a minimal pipeline that you can customize to build and deploy your code.
-# Add steps that build, run tests, deploy, and more:
-# https://aka.ms/yaml
-
 trigger:
 - none
 
@@ -22,7 +16,7 @@ pool:
 
 steps:
 - script: echo I did a PATCH
-  condition: eq('${{ parameters.version }}' , "PATCH")
+  condition: eq('${{ parameters.version }}' , 'PATCH')
 - task: Gradle@2
   inputs:
     gradleWrapperFile: 'gradlew'
