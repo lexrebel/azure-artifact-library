@@ -17,16 +17,12 @@ parameters:
   - MINOR
   - MAJOR
 
-jobs:
-  - job: B
-    steps:
-    - script: echo I did a PATCH
-    condition: eq(parameters.version, 'PATCH')
-
 pool:
   vmImage: ubuntu-latest
 
 steps:
+- script: echo I did a PATCH
+  condition: eq(parameters.version, 'PATCH')
 - task: Gradle@2
   inputs:
     gradleWrapperFile: 'gradlew'
