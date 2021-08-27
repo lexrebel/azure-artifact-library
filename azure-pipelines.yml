@@ -15,18 +15,6 @@ pool:
   vmImage: ubuntu-latest
 
 jobs:
-- job: "Publishing_artifact"
-  displayName: "Publicando artefato"
-  steps:
-  - task: Gradle@2
-    inputs:
-      gradleWrapperFile: 'gradlew'
-      tasks: 'build publish'
-      publishJUnitResults: true
-      testResultsFiles: '**/TEST-*.xml'
-      javaHomeOption: 'JDKVersion'
-      sonarQubeRunAnalysis: false
-      spotBugsAnalysis: false
 - ${{ if eq(parameters.version, 'PATCH') }}:
   - job: "increase_patch"
     displayName: "Subindo versão tipo PATCH"
@@ -42,3 +30,15 @@ jobs:
     displayName: "Subindo versão tipo MAJOR"
     steps:
     - script: echo "I did a MAJOR"
+- job: "Publishing_artifact"
+  displayName: "Publicando artefato"
+  steps:
+  - task: Gradle@2
+    inputs:
+      gradleWrapperFile: 'gradlew'
+      tasks: 'build publish'
+      publishJUnitResults: true
+      testResultsFiles: '**/TEST-*.xml'
+      javaHomeOption: 'JDKVersion'
+      sonarQubeRunAnalysis: false
+      spotBugsAnalysis: false
