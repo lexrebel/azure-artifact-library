@@ -14,19 +14,31 @@ parameters:
 pool:
   vmImage: ubuntu-latest
 
-steps:
+jobs:
+- job: "Publishing_artifact"
+  displayName: "Publicando artefato"
+  steps:
+  - task: Gradle@2
+    inputs:
+      gradleWrapperFile: 'gradlew'
+      tasks: 'build publish'
+      publishJUnitResults: true
+      testResultsFiles: '**/TEST-*.xml'
+      javaHomeOption: 'JDKVersion'
+      sonarQubeRunAnalysis: false
+      spotBugsAnalysis: false
 - ${{ if eq(parameters.version, 'PATCH') }}:
-  - script: echo "I did a PATCH"
+  - job: "increase_patch"
+    displayName: "Subindo versão tipo PATCH"
+    steps:
+    - script: echo "I did a PATCH"
 - ${{ if eq(parameters.version, 'MINOR') }}:
-  - script: echo "I did a MINOR"
+  - job: "increase_minor"
+    displayName: "Subindo versão tipo MINOR"
+    steps:
+    - script: echo "I did a MINOR"
 - ${{ if eq(parameters.version, 'MAJOR') }}:
-  - script: echo "I did a MAJOR"
-- task: Gradle@2
-  inputs:
-    gradleWrapperFile: 'gradlew'
-    tasks: 'build publish'
-    publishJUnitResults: true
-    testResultsFiles: '**/TEST-*.xml'
-    javaHomeOption: 'JDKVersion'
-    sonarQubeRunAnalysis: false
-    spotBugsAnalysis: false
+  - job: "increase_major"
+    displayName: "Subindo versão tipo MAJOR"
+    steps:
+    - script: echo "I did a MAJOR"
